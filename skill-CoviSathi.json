@@ -1,0 +1,472 @@
+{
+  "intents": [],
+  "entities": [
+    {
+      "entity": "faq",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "FAQ",
+          "synonyms": [
+            "faq",
+            "FAQs",
+            "FAQs on Vaccine",
+            "frequently asked",
+            "Frequently Asked Questions",
+            "questions"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "general_info",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "General Info",
+          "synonyms": [
+            "details",
+            "general",
+            "general info",
+            "general information",
+            "info",
+            "information",
+            "informations",
+            "knowledge"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "If I have symptoms",
+          "synonyms": [
+            "dos ",
+            "If I have symptoms ?",
+            "what should I do",
+            "what to do",
+            "What to do ?"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Symptoms",
+          "synonyms": [
+            "symptomp",
+            "Symptoms "
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Vaccination Information",
+          "synonyms": [
+            "covid vaccine information",
+            "vaccination information "
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "help_desk",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Govt Help Desk",
+          "synonyms": [
+            "covid helpline",
+            "covid numbers",
+            "covid websites",
+            "govt help desk",
+            "govt numbers",
+            "govt websites",
+            "help desk",
+            "helpline numbers"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "menu",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "menu",
+          "synonyms": [
+            "alternatives",
+            "choices",
+            "main menu",
+            "main options",
+            "menu",
+            "option",
+            "options"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "professional_advice",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Professional Advice",
+          "synonyms": [
+            "advice",
+            "advise",
+            "guidance ",
+            "professional ",
+            "professional advices"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "vaccination_appointment",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Book Vaccination Appointment",
+          "synonyms": [
+            "Appointment ",
+            "book vaccination appointment ",
+            "vaccination appointment "
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    },
+    "from-sample": true
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "🔴 I didn't understand. You can try rephrasing.\n🟢 Type \"Menu\" to view the Main Menu."
+              },
+              {
+                "text": "🔴 Can you reword your statement? I'm not understanding.\n🟢 Type \"Menu\" to view the Main Menu."
+              },
+              {
+                "text": "🔴 I didn't get your meaning.\n🟢 Type \"Menu\" to view the Main Menu."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "Welcome",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "▪️ Who will get the vaccine?      \nThe criteria for administration of COVID-19 vaccination was devised based on groups who were most at risk to exposure or developing serious illnesses. The first prioritized group was healthcare and frontline workers, followed by the population above 45 years of age. From May 1, the vaccination process has included everyone above 18 years of age.\n\n▪️ How will the vaccine be given & how many doses?\nIt will be given as an injection intramuscularly, in the upper arm. \nTwo doses of the vaccine need to be taken by an individual to complete the vaccination schedule.\nThe recommended intervals between the 2 doses of the COVID Vaccines: \nCOVAXIN: 4 to 6 weeks\nCOVISHIELD: 12 to 16 weeks\nSPUTNIK-V: 21 days\n\n▪️ Will the vaccine be safe or there are side effect?\nThe safety of COVID Vaccine is scientifically proven. As with all vaccines, minor events such as mild to moderate fever, body pain and swelling at injection site, etc. may be expected following COVID-19 vaccination. The vaccine administrators are fully equipped to take care of these. The beneficiaries are requested to wait for 30 minutes post vaccination at the session site.\n \n▪️ Can a person choose date and time of vaccination?\nAfter registering though the Co-WIN Portal, you can choose your place of vaccination by searching with your pincode or District/State and the date and time will be provided via SMS on your registered mobile number. CoWIN allows you to register at any place.\n\n▪️ Can person with active COVID infection be vaccinated?\nPerson with active symptom of COVID 19 infection may defer the vaccination for 3 months after recovery..\n\n▪️ Can a pregnant lady or lactating mother be vaccinated?\nCOVID-19 vaccination is recommended for all lactating women. The matter regarding COVID-19 Vaccination of pregnant women is under discussion and further deliberation by the National Technical Advisory Group on Immunization (NTAGI).\n\nNote: Social distance and wearing masks are mandatory.\n\n🟢 Type \"Menu\" to view the Main Menu."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "source": "https://www.thenewsminute.com/sites/default/files/styles/slideshow_image_size/public/Covishield_Covaxin_Vaccines_312020_1200.jpg?itok=UF8J9_sg",
+            "response_type": "image"
+          }
+        ]
+      },
+      "parent": "node_8_1637083812230",
+      "conditions": "@general_info:(Vaccination Information)",
+      "dialog_node": "node_1_1637086693602",
+      "previous_sibling": "node_3_1637086015201"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Please watch the videos by Doctors and experts to clear your doubts on Coronavirus \n\nProfessional Advice by Doctors/Experts 👇🏻\n\n▪️ <a href=\"https://youtu.be/XB0jOz5-u0Q\" target=\"blank\">Truth about rumors related to food and drink </a>\n\n▪️ Can COVID-19 spread from eatable items? Dr. Pulkit Mathur will clear all your doubts and share 5 rules one should follow to stay healthy. <a href=\"https://youtu.be/qTW5nZ6yt84\" target=\"blank\">Watch this video to know more. </a>\n\n▪️ Please watch to know about <a href=\"https://www.youtube.com/watch?v=ZndoALSgT4Q\" target=\"blank\">Home Isolation</a> for very mild/ pre-symptomatic #COVID19 patient\n\n▪️ Please watch to know - <a href=\"https://www.youtube.com/watch?v=i4n7MfWYuYs\" target=\"blank\">how to care for a sick person</a>\n\n🟢 Type \"Menu\" to view the Main Menu."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "source": "https://transformingindia.mygov.in/wp-content/uploads/2020/05/WhatsApp-Image-2020-04-27-at-7.16.16-PM.jpeg",
+            "response_type": "image"
+          }
+        ]
+      },
+      "parent": "Welcome",
+      "conditions": "@professional_advice",
+      "dialog_node": "node_2_1637082907914",
+      "previous_sibling": "node_5_1637081726481"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Don't worry if you are seeing COVID symptoms. Please isolate yourself immediately and consult a doctor.    \n  \nFor any medical emergency, please contact \n📞 011-23978046 \n☎️Dial toll-free number: 1075 or \n✉️Email at ncov2019@gov.in\n\n\n🟢 Type \"Menu\" to view the Main Menu."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_8_1637083812230",
+      "conditions": "@general_info:(If I have symptoms)",
+      "dialog_node": "node_3_1637086015201",
+      "previous_sibling": "node_7_1637085846495"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "👉🏻 <a href=\"https://static.mygov.in/rest/s3fs-public/mygov_161363205255063671.pdf\" target=\"blank\">FAQs on Vaccine for COVID-19</a>\n\n👉🏻 <a href=\"https://static.mygov.in/rest/s3fs-public/mygov_161770081055063671.pdf\" target=\"blank\">FAQs on COVID Vaccination </a>\n\n👉🏻 <a href=\"https://static.mygov.in/rest/s3fs-public/mygov_161976709555063671.pdf\" target=blank>Guidelines for Home Isolation </a>\n\n👉🏻 <a href=\" https://static.mygov.in/rest/s3fs-public/mygov_162079754055063671.pdf\" target=\"blank\">Evidence Based Advisory in the Time of COVID-19: Screening, Diagnosis & Management of Mucormycosis </a>\n\n🟢 Type \"Menu\" to view the Main Menu."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "Welcome",
+      "conditions": "@faq",
+      "dialog_node": "node_5_1637081726481",
+      "previous_sibling": "node_7_1637086959927"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "For medical help in India please reach out to the 24/7 Control Room.\n\n📞 Phone: +91-11-23978046\n☎️ Toll-Free Number: 1075\n✉️ Email: ncov2019@gov.in\n\nFor Behavioural Health: Psycho-Social \n📞 08046110007\n\nMHA Central Control Room for COVID-19 👇\n☎️ Toll-Free Number: 1930 \n☎️ Toll-Free Number: 1944 exclusively for persons from North East States\n\n\n🟢 Type \"Menu\" to view the Main Menu."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_8_1637083812230",
+      "conditions": "@help_desk",
+      "dialog_node": "node_5_1637083521586",
+      "previous_sibling": "node_1_1637086693602"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "🤒 Fever\n😐 Breathing problem\n🤧 Coughing\n😫 Tightness of chest\n👃 Running Nose\n😨 Headache\n🌡️ Feeling unwell\n😷 Pneumonia\n💉 Kidney Failure\n👃 Loss of smell (anosmia) or loss of taste (ageusia) \n\n🟢 Type \"Menu\" to view the Main Menu."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "source": "https://www.who.int/images/default-source/searo---images/countries/indonesia/infographics/covid19_symptoms.jpg?sfvrsn=b599a602_5",
+            "response_type": "image"
+          }
+        ]
+      },
+      "parent": "node_8_1637083812230",
+      "conditions": "@general_info:Symptoms",
+      "dialog_node": "node_7_1637085846495"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "For Book, Reschedule & Cancel your Vaccination Appointment or any other vaccination-related service like downloading vaccination certificate visit <a href=\"https://www.cowin.gov.in/\" target=\"blank\">cowin portal</a>.\n\n🟢 Type \"Menu\" to view the Main Menu."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "source": "https://c.ndtvimg.com/2021-06/bqs0sfc4_vaccine-generic-reuters_625x300_03_June_21.jpg",
+            "response_type": "image"
+          }
+        ]
+      },
+      "parent": "Welcome",
+      "conditions": "@vaccination_appointment",
+      "dialog_node": "node_7_1637086959927",
+      "previous_sibling": "node_8_1637083812230"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Coronavirus disease (COVID-19) is an infectious disease caused by the SARS-CoV-2 virus.\n\nMost people who fall sick with COVID-19 will experience mild to moderate symptoms and recover without special treatment. However, some will become seriously ill and require medical attention.\n\nThe virus can spread from an infected person’s mouth or nose in small liquid particles when they cough, sneeze, speak, sing or breathe. These particles range from larger respiratory droplets to smaller aerosols.\n\nYou can be infected by breathing in the virus if you are near someone who has COVID-19, or by touching a contaminated surface and then your eyes, nose or mouth. The virus spreads more easily indoors and in crowded settings.\n\n🟢 Type \"Menu\" to view the Main Menu."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "source": "https://www.who.int/images/default-source/mca/mca-covid-19/coronavirus-2.tmb-1024v.jpg?Culture=en&sfvrsn=4dba955c_6",
+            "response_type": "image"
+          },
+          {
+            "title": "For more information 👇🏻",
+            "options": [
+              {
+                "label": "Symptoms ",
+                "value": {
+                  "input": {
+                    "text": "symptoms "
+                  }
+                }
+              },
+              {
+                "label": "If I have Symptoms ?",
+                "value": {
+                  "input": {
+                    "text": "what to do"
+                  }
+                }
+              },
+              {
+                "label": "Vaccination Information ",
+                "value": {
+                  "input": {
+                    "text": "vaccination information "
+                  }
+                }
+              },
+              {
+                "label": "Govt Help Desk",
+                "value": {
+                  "input": {
+                    "text": "govt help desk"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "Welcome",
+      "conditions": "@general_info",
+      "dialog_node": "node_8_1637083812230"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello. This is CoviSathi, your 24x7 COVID-19 assistant bot."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "title": "Please choose from the following options 👇🏻",
+            "options": [
+              {
+                "label": "General Info",
+                "value": {
+                  "input": {
+                    "text": "general information "
+                  }
+                }
+              },
+              {
+                "label": "Book Vaccination Appointment ",
+                "value": {
+                  "input": {
+                    "text": "vaccination appointment "
+                  }
+                }
+              },
+              {
+                "label": "FAQs",
+                "value": {
+                  "input": {
+                    "text": "frequently asked questions"
+                  }
+                }
+              },
+              {
+                "label": "Professional Advice",
+                "value": {
+                  "input": {
+                    "text": "Professional advice"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "welcome || @menu",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "intent_classification": {
+      "training_backend_version": "v2"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "CoviSathi",
+  "language": "en",
+  "description": "Chatbot for every type of information related to Covid 19"
+}
